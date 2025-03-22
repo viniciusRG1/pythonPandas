@@ -105,3 +105,53 @@ df1.plot()
 serie_1 = pd.Series(arr.cumsum())
 serie_1.plot()
 
+df1.plot(x='c',y=['a','b'])
+
+import numpy as np
+
+numeros = np.random.randint(1,10, size=40)
+
+serie_1 = pd.Series(numeros)
+
+serie_1.plot.bar()
+
+serie_1.plot.pie(subplots=True)
+
+a_arr = np.arange(20).reshape(4,5)
+
+df_columns = ['a','b','c','d','e']
+df = pd.DataFrame(a_arr,columns=df_columns)
+
+df.drop(index=2)
+
+df.drop(columns='c', index=[0,2])
+
+b_arr = np.vstack([a_arr, np.array([np.nan,np.nan,np.nan,np.nan,np.nan]),np.array([np.nan,np.nan,np.nan,np.nan,np.nan])])
+dfb = pd.DataFrame(b_arr,columns=df_columns)
+dfb.isnull()
+
+dfb['a'].notnull()
+
+dfb.dropna()
+
+dfb.fillna(value=1)
+
+dfb.duplicated(keep='last')
+
+import numpy as np
+import pandas as pd
+
+arrA = np.arange(20).reshape(5,4)
+
+dfA = pd.DataFrame(arrA)
+list(dfA.index)
+
+dfA
+
+aTupla = [('A',0),('A',1),('A',2),('B',3),('B',4)]
+aIndex = pd.MultiIndex.from_tuples(aTupla)
+type(aIndex)
+
+dfA2 = pd.DataFrame(arrA, index = aIndex)
+dfA2
+
